@@ -1,24 +1,41 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
- <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
-  <title>第三次還沒融化</title>
-   <link rel="icon" href="https://www.persona-media.com/wp-content/uploads/2022/11/%E5%B0%8F%E6%AA%9402%E8%94%A1%E5%B4%87%E9%9A%86-1.jpg" />
-  
-  </head>
-  
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="Scripts/isRockFx.js"></script>
+    <script>
+        $(function () {
+            $('#ButtonCal').click(
+                function () {
+                    //取得用戶輸入的參數
+                    var para = { 'height': $('#txbHeight').val(), 'weight': $('#txbWeight').val() };
+                    //呼叫API
+                    ExecuteAPI('Example', 'BMI', para,
+			//呼叫WebAPI成功時運行的Call Back Function
+                        function (result) {
+                            alert(result.Data);
+                        }
+                        );
+                }
+                );
+        });
+    </script>
+</head>
 <body>
- <img src="https://www.persona-media.com/wp-content/uploads/2022/11/%E5%B0%8F%E6%AA%9402%E8%94%A1%E5%B4%87%E9%9A%86-1.jpg" width="399" height="299">
- <img src="https://telecom.ccu.edu.tw/var/file/88/1088/img/256/213_img_10.jpg" width="500" height="800">
-  <p>Before the script...</p>
-
-  <script>
-    //alert( 'Hello, world!' );
-  </script>
-
-  <p>...After the script.</p>
-
+    <div class="row" style="margin:10px">
+        <div class="col-md-12">
+            <div class="form-group">
+                身高:
+                <input id="txbHeight" class="form-control" placeholder="請輸入身高" />
+                體重:
+                <input id="txbWeight" class="form-control" placeholder="請輸入體重" />
+                <br />
+                <button class="btn btn-primary" id="ButtonCal">計算</button>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
